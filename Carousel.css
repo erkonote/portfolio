@@ -1,0 +1,56 @@
+/* Carrousel de diapositives. Utilise les variables définies dans style.css */
+.back{display:inline-block;margin-bottom:1.5rem;font:700 1rem var(--display)}
+.lead{max-width:40rem;margin:0 0 2rem}
+
+.carousel{position:relative}
+.track{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  border:2px solid var(--fg);
+  background:var(--soft);
+  scrollbar-width:none;
+}
+.track::-webkit-scrollbar{display:none}
+.slide{
+  flex:0 0 100%;
+  margin:0;
+  scroll-snap-align:center;
+  aspect-ratio:16/9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.slide img{width:100%;height:100%;object-fit:contain;display:block}
+
+.controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  margin-top:1.2rem;
+  flex-wrap:wrap;
+}
+.ctrl{
+  font:700 1rem var(--display);
+  padding:.7rem 1.3rem;
+  border:2px solid var(--fg);
+  background:transparent;
+  color:var(--fg);
+  border-radius:999px;
+  cursor:pointer;
+}
+.ctrl:hover:not(:disabled){background:var(--fg);color:var(--bg)}
+.ctrl:disabled{opacity:.35;cursor:default}
+.count{font:700 1rem var(--display);min-width:5rem;text-align:center}
+
+.dots{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem;padding:0;list-style:none}
+.dots button{
+  width:.9rem;height:.9rem;padding:0;
+  border:2px solid var(--fg);border-radius:50%;
+  background:transparent;cursor:pointer;
+}
+.dots button[aria-current="true"]{background:var(--fg)}
+
+@media(prefers-reduced-motion:reduce){.track{scroll-behavior:auto}}
